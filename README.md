@@ -11,36 +11,36 @@
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-A **Streamlit cookbook** — Python data apps for geospatial exploration. Installed in wave-11 (Node-1 wave11-venv, Wally spot-checked 2026-10-25). First pattern pass written below (design-only, gate 1 target). It is intended for Python developers who turn analyses into shareable web apps. Validate each pattern against your own data, software versions, and operating environment before adopting it.
+A Streamlit cookbook for Python data apps and geospatial exploration. It is intended for Python developers who turn analyses into shareable web applications. Examples should use synthetic or public data and must be validated against the reader's own software versions and environment before adoption.
 
-## Repository role and status
+## Repository role and maturity
 
-**Status:** Active, public. First pattern pass written (design-only, gate 1 target — none runtime-validated on the fleet yet).
+**Status:** Examples Present — patterns are documented; fleet runtime validation remains pending.
 
-**What this repository is:** Streamlit patterns — see the table below.
+This repository is part of the ZQM Computing geospatial portfolio. The series index is [geospatial-cookbooks](https://github.com/ZQM-Computing/geospatial-cookbooks).
 
-**What it contributes:** Part of the ZQM Computing geospatial portfolio. The umbrella index for the series is [geospatial-cookbooks](https://github.com/ZQM-Computing/geospatial-cookbooks).
+Automated checks cover only the paths and environments configured in this repository. Documentation, spot checks, and successful static checks do not establish production readiness or operational certification.
 
-**Standing:** This repository is maintained independently. Automated checks cover only the paths and environments configured in its workflows; they do not establish production readiness or operational certification.
+## Intended audience
 
-## Who this is for
-
-Python developers who turn analyses into shareable web apps.
+Python developers building interactive data exploration apps, especially apps that present geospatial layers, filters, tables, and small local datasets.
 
 ## Prerequisites
 
-- Streamlit 1.66.1 in Node-1's wave11-venv (`C:\geo-tools\wave11-venv`, Python 3.12.10) — invoke the venv Streamlit by full path, never bare `python` (hermes venv)
-- SQLite (standard library) for the 03 data fixture; DuckDB/Postgres live connections are validation items, not asserted
-- Port 8501 (Streamlit default) free for smoke runs; no persistent service is installed by these patterns
+- Python 3.12.10 and Streamlit 1.66.1 are the documented reference environment for the Node-1 wave11-venv spot check. Confirm the versions installed in your own environment before running examples.
+- Use the dedicated project environment's Python/Streamlit executable; do not assume that a bare `python` command selects the intended virtual environment.
+- Port 8501 must be available for the default local Streamlit server.
+- The data-app example uses a local SQLite fixture. DuckDB/Postgres live connections are optional adaptations, not prerequisites for the documented examples.
+- Do not run experimental examples as persistent production services.
 
-## Patterns
+## Examples
 
-| # | Example | What it demonstrates | Status |
-|---|---------|----------------------|--------|
-| 01 | [examples/01-first-app](examples/01-first-app) | A first app: widgets, maps, and tables | Written (design-only) |
-| 02 | [examples/02-map-app](examples/02-map-app) | Interactive maps with filters and layers | Written (design-only) |
-| 03 | [examples/03-data-app](examples/03-data-app) | Querying a database from an app (SQLite fixture; DuckDB/Postgres swap documented) | Written (design-only) |
-| 04 | [examples/04-deploy-notes](examples/04-deploy-notes) | Running an app as a smoke-run service (headless, localhost, port 8501) | Written (design-only) |
+| # | Example | Maturity | What it demonstrates |
+|---|---------|---------|----------------------|
+| 01 | [First app](examples/01-first-app) | Written; runtime validation pending | Widgets, maps, and tables |
+| 02 | [Map app](examples/02-map-app) | Written; runtime validation pending | Interactive maps, filters, and layers |
+| 03 | [Data app](examples/03-data-app) | Written; runtime validation pending | Querying a local SQLite fixture; optional database adaptations |
+| 04 | [Deployment notes](examples/04-deploy-notes) | Documentation; runtime validation pending | Headless local smoke-run considerations |
 
 ## Repository layout
 
@@ -52,20 +52,46 @@ streamlit-cookbook/
 │   ├── 03-data-app/
 │   └── 04-deploy-notes/
 ├── README.md
+├── CONTRIBUTING.md
 └── LICENSE
 ```
 
-## Roadmap
+## Validate locally
 
-- First pattern pass: all four table rows (design-only, gate 1 target)
-- Validation pass: run each pattern against the fleet environment and promote to gate 3
+The examples have not yet been independently runtime-validated across the fleet. For a disposable local environment:
+
+1. Confirm the Python and Streamlit versions.
+2. Review the selected example's README and inspect its data paths and dependencies.
+3. Start the app with the environment's Streamlit executable, for example:
+
+   ```bash
+   streamlit run app.py --server.address 127.0.0.1 --server.port 8501
+   ```
+
+   Run the command from the example directory and adjust the entry-point filename to match that example.
+4. Open the local app, exercise the main controls, and check the terminal for exceptions.
+5. Confirm that all inputs are synthetic/public and that no unexpected external write or remote connection occurs.
+
+A successful startup is only a smoke test. It does not establish correctness of spatial analysis, accessibility, security, performance, or deployment behavior.
+
+## What this does not claim
+
+- The examples are not certified for production use.
+- A spot check of one environment does not establish that all examples work on every listed version or node.
+- Optional DuckDB/Postgres connections are not claimed to be configured or tested.
+- Localhost smoke-running is not a production deployment guide.
+- No private geospatial datasets or participant data should be added to examples.
 
 ## Contributing
 
-A contributing guide lands with the first pattern pass. Report security issues to <zqmcomputing@gmail.com> — please do not open a public issue for those.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution and validation expectations. Report security issues privately to zqmcomputing@gmail.com; do not publish exploitable details in a public issue.
 
-## More from this series
+## Related patterns
 
-- [geopandas-cookbook](https://github.com/ZQM-Computing/geopandas-cookbook) — GeoDataFrame patterns: joins, overlays, and spatial analysis
-- [duckdb-spatial-cookbook](https://github.com/ZQM-Computing/duckdb-spatial-cookbook) — Analytical geospatial SQL with DuckDB Spatial
-- [folium-cookbook](https://github.com/ZQM-Computing/folium-cookbook) — Interactive Leaflet maps from Python
+- [GeoPandas Cookbook](https://github.com/ZQM-Computing/geopandas-cookbook) — GeoDataFrame joins, overlays, and spatial analysis.
+- [DuckDB Spatial Cookbook](https://github.com/ZQM-Computing/duckdb-spatial-cookbook) — analytical geospatial SQL with DuckDB Spatial.
+- [Folium Cookbook](https://github.com/ZQM-Computing/folium-cookbook) — interactive Leaflet maps from Python.
+
+---
+
+Part of the [ZQM Computing geospatial cookbook portfolio](https://github.com/ZQM-Computing/geospatial-cookbooks).
