@@ -58,7 +58,7 @@ streamlit-cookbook/
 
 ## Validate locally
 
-The examples have not yet been independently runtime-validated across the fleet. For a disposable local environment:
+The examples have not yet been independently runtime-validated across the fleet. For application examples **01–03**, use a disposable local environment:
 
 1. Confirm the Python and Streamlit versions.
 2. Review the selected example's README and inspect its data paths and dependencies.
@@ -68,7 +68,7 @@ The examples have not yet been independently runtime-validated across the fleet.
    streamlit run app.py --server.address 127.0.0.1 --server.port 8501
    ```
 
-   Run the command from the example directory and adjust the entry-point filename to match that example.
+   Run the command from an application example directory (01–03) and adjust the entry-point filename to match that example. **Example 04 contains deployment notes, not a runnable app**; follow its own documented launcher and validation guidance instead.
 4. Open the local app, exercise the main controls, and check the terminal for exceptions.
 5. Confirm that all inputs are synthetic/public and that no unexpected external write or remote connection occurs.
 
