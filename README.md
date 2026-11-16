@@ -27,6 +27,8 @@ Python developers building interactive data exploration apps, especially apps th
 
 ## Prerequisites
 
+Fleet paths and versions below are a historical snapshot from the Oct 2026 creation wave; verify against the current fleet before use.
+
 - Python 3.12.10 and Streamlit 1.66.1 are the documented reference environment for the Node-1 wave11-venv spot check. Confirm the versions installed in your own environment before running examples.
 - Use the dedicated project environment's Python/Streamlit executable; do not assume that a bare `python` command selects the intended virtual environment.
 - Port 8501 must be available for the default local Streamlit server.
